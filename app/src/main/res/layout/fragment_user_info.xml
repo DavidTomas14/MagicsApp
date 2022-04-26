@@ -6,17 +6,58 @@
     android:background="@android:color/white">
 
 
-    <!-- region Loading, error and empty views -->
-    <!-- These views are clickable and focusable to block user interaction -->
-    <Button
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="250dp"
+        android:text="@string/user_name"
+        android:textSize="@dimen/text_hero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/user_first_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/user_name"
+        android:text="@string/user_first_surname"
+        android:textSize="@dimen/text_hero"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/user_second_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/user_first_surname"
+        android:text="@string/user_second_surname"
+        android:textSize="@dimen/text_hero"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/fecha_realizacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/user_second_surname"
+        app:layout_constraintBottom_toTopOf="@+id/bt_navegar"
+        android:text="@string/fecha_realizacion"
+        android:textSize="@dimen/text_hero"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+   <Button
         android:id="@+id/bt_navegar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Navegar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:text="Navegar"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
     <com.company.mobile.android.appname.app.common.widget.loading.LoadView
         android:id="@+id/lv_bufferoos_loading_view"

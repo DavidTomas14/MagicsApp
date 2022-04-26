@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">Magic Cards</string>
 
+    <!-- region UserInfo -->
+    <string name="user_name">David Tomás</string>
+    <string name="user_first_surname">Alonso</string>
+    <string name="user_second_surname">Calderón</string>
+    <string name="fecha_realizacion">26&#8211;04&#8211;2022</string>
+
+
+
+
+
     <string name="empty_default_message">No hay resultados para mostrar</string>
     <string name="empty_check_again">Intentar de nuevo</string>
     <string name="error_default_message">Se ha producido un error al obtener los datos.</string>
