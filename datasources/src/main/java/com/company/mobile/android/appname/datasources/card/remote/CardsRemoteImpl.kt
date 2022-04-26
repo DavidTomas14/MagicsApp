@@ -24,9 +24,9 @@ class CardsRemoteImpl constructor(
                 // If remote request fails, use remote exception mapper to transform Retrofit exception to an app exception
                 Single.error(RemoteExceptionMapper.getException(throwable))
             }
-            .map { cards ->
+            .map { listResponse ->
                 val entities = mutableListOf<Card>()
-                cards.forEach { card ->
+                listResponse.cards.forEach { card ->
                     entities.add(cardResponseMapper.mapFromRemote(card))
                 }
                 entities

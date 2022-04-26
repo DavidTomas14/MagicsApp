@@ -2,7 +2,9 @@ package com.company.mobile.android.appname.app.di
 
 import com.company.mobile.android.appname.app.BuildConfig
 import com.company.mobile.android.appname.app.UiThread
+import com.company.mobile.android.appname.app.card.CardsViewModel
 import com.company.mobile.android.appname.app.card.adapter.CardAdapter
+import com.company.mobile.android.appname.app.common.errorhandling.ErrorBundleBuilder
 import com.company.mobile.android.appname.data.bufferoo.repository.CardsRepositoryImpl
 import com.company.mobile.android.appname.data.bufferoo.source.CardsDataStoreFactory
 import com.company.mobile.android.appname.data.bufferoo.source.CardsRemoteDataStore
@@ -15,6 +17,7 @@ import com.company.mobile.android.appname.domain.executor.JobExecutor
 import com.company.mobile.android.appname.domain.executor.PostExecutionThread
 import com.company.mobile.android.appname.domain.executor.ThreadExecutor
 import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 /**
@@ -38,5 +41,6 @@ val cardsModule = module {
     factory { CardsDataStoreFactory(get()) }
     factory <CardsRepository>{ CardsRepositoryImpl(get()) }
     factory { GetCardsUseCase(get(), get(), get()) }
-    factory { CardAdapter() }
+ /*   factory <ErrorBundleBuilder>(named("cardsErrorBundleBuilder"){ CardsE }*/
+    viewModel { CardsViewModel(get()) }
 }
