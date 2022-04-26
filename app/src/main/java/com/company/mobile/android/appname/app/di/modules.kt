@@ -2,6 +2,7 @@ package com.company.mobile.android.appname.app.di
 
 import com.company.mobile.android.appname.app.BuildConfig
 import com.company.mobile.android.appname.app.UiThread
+import com.company.mobile.android.appname.app.card.adapter.CardAdapter
 import com.company.mobile.android.appname.data.bufferoo.repository.CardsRepositoryImpl
 import com.company.mobile.android.appname.data.bufferoo.source.CardsDataStoreFactory
 import com.company.mobile.android.appname.data.bufferoo.source.CardsRemoteDataStore
@@ -37,4 +38,5 @@ val cardsModule = module {
     factory { CardsDataStoreFactory(get()) }
     factory <CardsRepository>{ CardsRepositoryImpl(get()) }
     factory { GetCardsUseCase(get(), get(), get()) }
+    factory { CardAdapter() }
 }

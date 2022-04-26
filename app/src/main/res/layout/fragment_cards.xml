@@ -2,16 +2,15 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_bufferoos"
+        android:id="@+id/rv_list_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="@dimen/bufferoo_master_list_padding"
-        android:paddingTop="@dimen/bufferoo_master_list_padding"
-        android:scrollbars="none" />
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"/>
 
     <!-- region Loading, error and empty views -->
     <!-- These views are clickable and focusable to block user interaction -->
