@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "527166723859",
+    "project_id": "android-clean-architectu-e3534",
+    "storage_bucket": "android-clean-architectu-e3534.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527166723859:android:bfbcb0a5494a8f97126ce6",
+        "android_client_info": {
+          "package_name": "com.company.mobile.android.appname"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527166723859-3k3klehkhiui7mdv1pu8bb2evaas2kij.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.company.mobile.android.appname",
+            "certificate_hash": "1d6ac2481923d8ed5b5740bac45bc21965cfbf61"
+          }
+        },
+        {
+          "client_id": "527166723859-djg9ln58a11pldsrutr8ai0glr1te7hs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBumPDxmQz0ocRFJ7zDM8zZZzx7Y58oBV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527166723859-djg9ln58a11pldsrutr8ai0glr1te7hs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

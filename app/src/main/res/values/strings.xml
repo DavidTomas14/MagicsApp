@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Magic Cards</string>
+
+    <string name="empty_default_message">No hay resultados para mostrar</string>
+    <string name="empty_check_again">Intentar de nuevo</string>
+    <string name="error_default_message">Se ha producido un error al obtener los datos.</string>
+    <string name="error_try_again">Reintentar</string>
+    <string name="loading">Cargando&#8230;</string>
+    <string name="error_dialog_title">Error</string>
+    <string name="not_available_yet">No disponible todavía</string>
+
+
+</resources>
