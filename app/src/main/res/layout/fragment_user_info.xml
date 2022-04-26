@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white">
+
+
+    <!-- region Loading, error and empty views -->
+    <!-- These views are clickable and focusable to block user interaction -->
+    <Button
+        android:id="@+id/bt_navegar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Navegar"/>
+
+    <com.company.mobile.android.appname.app.common.widget.loading.LoadView
+        android:id="@+id/lv_bufferoos_loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+
+    <com.company.mobile.android.appname.app.common.widget.empty.EmptyView
+        android:id="@+id/ev_bufferoos_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLightBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+
+    <com.company.mobile.android.appname.app.common.widget.error.ErrorView
+        android:id="@+id/ev_bufferoos_error_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLightBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+    <!-- endregion -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

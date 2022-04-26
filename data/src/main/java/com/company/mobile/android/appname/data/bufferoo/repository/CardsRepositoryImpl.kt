@@ -10,6 +10,6 @@ class CardsRepositoryImpl(
 ): CardsRepository {
 
     override fun getCards(): Single<List<Card>> {
-        TODO("Not yet implemented")
+        return cardsDataStoreFactory.retrieveRemoteDataStore().getCards()
     }
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/userInfoFragment">
+
+    <fragment
+        android:id="@+id/cardsFragment"
+        android:name="com.company.mobile.android.appname.app.card.CardsFragment"
+        android:label="CardsFragment" />
+    <fragment
+        android:id="@+id/userInfoFragment"
+        android:name="com.company.mobile.android.appname.app.user_info.UserInfoFragment"
+        android:label="UserInfoFragment" />
+</navigation>
