@@ -1,5 +1,7 @@
 package com.company.mobile.android.appname.app.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
@@ -13,5 +15,11 @@ class MainActivity: AppCompatActivity() {
 
     }
 
+    companion object {
+
+        fun getCallingIntent(context: Context): Intent {
+            return Intent(context, MainActivity::class.java)
+        }
+    }
 
 }

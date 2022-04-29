@@ -1,6 +1,6 @@
 package com.company.mobile.android.appname.model.card
 
-import java.util.*
+import java.io.Serializable
 
 data class Card(
     val id: Int,
@@ -9,4 +9,4 @@ data class Card(
     val text: String,
     val power: String,
     val imageUrl: String
-)
+): Serializable

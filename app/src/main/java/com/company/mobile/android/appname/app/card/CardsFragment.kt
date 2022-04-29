@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.company.mobile.android.appname.app.R
 import com.company.mobile.android.appname.app.card.adapter.CardAdapter
@@ -23,7 +24,7 @@ class CardsFragment : BaseFragment() {
 
     private val adapterListener = object : CardAdapter.CardAdapterListener{
         override fun onDetalleClicked(card: Card) {
-            findNavController().navigate(R.id.userInfoFragment)
+            findNavController().navigate(CardsFragmentDirections.actionCardsFragmentToCardsDetailFragment(card))
         }
 
     }
@@ -45,9 +46,9 @@ class CardsFragment : BaseFragment() {
         super.initializeState(savedInstanceState)
 
         //Inicializar observadores
-        cardViewModel.getCards().observe(viewLifecycleOwner, {
+        cardViewModel.getCards().observe(viewLifecycleOwner) {
             handleState(it)
-        })
+        }
     }
 
     private fun handleState(cardsState: ResourceState<List<Card>>?) {

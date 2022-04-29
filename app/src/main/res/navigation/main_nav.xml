@@ -7,9 +7,21 @@
     <fragment
         android:id="@+id/cardsFragment"
         android:name="com.company.mobile.android.appname.app.card.CardsFragment"
-        android:label="CardsFragment" />
+        android:label="CardsFragment" >
+        <action
+            android:id="@+id/action_cardsFragment_to_cardsDetailFragment"
+            app:destination="@id/cardsDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/userInfoFragment"
         android:name="com.company.mobile.android.appname.app.user_info.UserInfoFragment"
         android:label="UserInfoFragment" />
+    <fragment
+        android:id="@+id/cardsDetailFragment"
+        android:name="com.company.mobile.android.appname.app.card.CardsDetailFragment"
+        android:label="CardsDetailFragment" >
+        <argument
+            android:name="card"
+            app:argType="com.company.mobile.android.appname.model.card.Card" />
+    </fragment>
 </navigation>
