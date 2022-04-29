@@ -2,7 +2,10 @@ package com.company.mobile.android.appname.app.card
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.company.mobile.android.appname.app.common.errorhandling.AppAction
+import com.company.mobile.android.appname.app.common.errorhandling.ErrorBundleBuilder
 import com.company.mobile.android.appname.app.common.model.ResourceState
+import com.company.mobile.android.appname.app.common.model.ResourceState.Error
 import com.company.mobile.android.appname.app.common.model.ResourceState.Loading
 import com.company.mobile.android.appname.app.common.model.ResourceState.Success
 import com.company.mobile.android.appname.app.common.viewmodel.CommonEventsViewModel
@@ -16,7 +19,7 @@ typealias CardListState = ResourceState<List<Card>>
 
 class CardsViewModel(
     private val getCardsUseCase: GetCardsUseCase,
-    /*private val errorBundleBuilder: ErrorBundleBuilder*/
+    private val errorBundleBuilder: ErrorBundleBuilder
 ) : CommonEventsViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
@@ -34,6 +37,7 @@ class CardsViewModel(
                    cardsListMutableLiveData.value = Success(it)
                 },
                 {
+                    cardsListMutableLiveData.value = Error(errorBundleBuilder.build(it, AppAction.GET_CARDS))
                     Timber.e(it)
                 })
         )

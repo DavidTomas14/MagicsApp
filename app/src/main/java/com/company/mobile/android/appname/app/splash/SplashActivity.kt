@@ -1,10 +1,8 @@
-package com.company.mobile.android.appname.app.card.splash
+package com.company.mobile.android.appname.app.splash
 
 import android.os.Bundle
 import android.os.Handler
-import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
-import com.company.mobile.android.appname.app.R
 import com.company.mobile.android.appname.app.common.navigation.Navigator
 
 class SplashActivity: AppCompatActivity() {

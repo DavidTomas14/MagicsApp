@@ -5,17 +5,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_list_card"
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsv_list_card"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"/>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/view_screen_title" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_list_card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/vertical_margin"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2" />
+
+        </LinearLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
 
     <!-- region Loading, error and empty views -->
     <!-- These views are clickable and focusable to block user interaction -->
     <com.company.mobile.android.appname.app.common.widget.loading.LoadView
-        android:id="@+id/lv_bufferoos_loading_view"
+        android:id="@+id/lv_cards_loading_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="true"
@@ -23,7 +45,7 @@
         android:visibility="gone" />
 
     <com.company.mobile.android.appname.app.common.widget.empty.EmptyView
-        android:id="@+id/ev_bufferoos_empty_view"
+        android:id="@+id/ev_cards_empty_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorLightBackground"
@@ -32,7 +54,7 @@
         android:visibility="gone" />
 
     <com.company.mobile.android.appname.app.common.widget.error.ErrorView
-        android:id="@+id/ev_bufferoos_error_view"
+        android:id="@+id/ev_cards_error_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorLightBackground"

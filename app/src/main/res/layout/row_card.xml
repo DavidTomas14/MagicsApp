@@ -16,7 +16,7 @@
         android:src="@drawable/ic_user"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:padding="@dimen/bufferoo_master_icon_padding" />
+        android:padding="@dimen/cards_master_icon_padding" />
 
     <TextView
         android:id="@+id/tv_card_row_name"

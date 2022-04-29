@@ -30,11 +30,6 @@ class CardsDetailFragment : BaseFragment() {
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        activity?.actionBar?.hide()
-    }
-
     override fun initializeContents(savedInstanceState: Bundle?) {
         super.initializeContents(savedInstanceState)
 

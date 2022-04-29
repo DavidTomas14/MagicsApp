@@ -1,7 +1,9 @@
 package com.company.mobile.android.appname.app.di
 
+import androidx.room.Room
 import com.company.mobile.android.appname.app.BuildConfig
 import com.company.mobile.android.appname.app.UiThread
+import com.company.mobile.android.appname.app.card.CardsErrorBundleBuilder
 import com.company.mobile.android.appname.app.card.CardsViewModel
 import com.company.mobile.android.appname.app.card.adapter.CardAdapter
 import com.company.mobile.android.appname.app.common.errorhandling.ErrorBundleBuilder
@@ -18,6 +20,7 @@ import com.company.mobile.android.appname.domain.executor.PostExecutionThread
 import com.company.mobile.android.appname.domain.executor.ThreadExecutor
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 /**
@@ -32,7 +35,14 @@ val applicationModule = module(override = true) {
 
     single<ThreadExecutor> { JobExecutor() }
     single<PostExecutionThread> { UiThread() }
-    factory { CardServiceFactory.makeCardService(BuildConfig.DEBUG) }
+    factory { CardServiceFactory.makeCardService(BuildConfig.DEBUG) }/*
+
+    single {
+        Room.databaseBuilder(
+            androidContext(),
+            AteneaDatabase::class.java, "atenea.sqlite"
+        ).build()
+    }*/
 }
 
 val cardsModule = module {
@@ -41,6 +51,6 @@ val cardsModule = module {
     factory { CardsDataStoreFactory(get()) }
     factory <CardsRepository>{ CardsRepositoryImpl(get()) }
     factory { GetCardsUseCase(get(), get(), get()) }
- /*   factory <ErrorBundleBuilder>(named("cardsErrorBundleBuilder"){ CardsE }*/
-    viewModel { CardsViewModel(get()) }
+    factory <ErrorBundleBuilder>(named("cardsErrorBundleBuilder")){ CardsErrorBundleBuilder() }
+    viewModel { CardsViewModel(get(), get(named("cardsErrorBundleBuilder"))) }
 }

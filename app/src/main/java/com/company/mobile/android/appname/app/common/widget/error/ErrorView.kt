@@ -7,6 +7,7 @@ import android.widget.RelativeLayout
 import com.company.mobile.android.appname.app.R
 import com.company.mobile.android.appname.app.common.errorhandling.ErrorBundle
 import com.company.mobile.android.appname.app.databinding.ViewErrorBinding
+
 import timber.log.Timber
 
 /**
@@ -14,8 +15,7 @@ import timber.log.Timber
  */
 class ErrorView : RelativeLayout {
 
-    private val binding = ViewErrorBinding.inflate(LayoutInflater.from(context), this)
-
+    lateinit var binding: ViewErrorBinding
     var errorListener: ErrorListener? = null
     var errorBundle: ErrorBundle? = null
 
@@ -33,7 +33,7 @@ class ErrorView : RelativeLayout {
     }
 
     private fun init() {
-        LayoutInflater.from(context).inflate(R.layout.view_error, this)
+        binding = ViewErrorBinding.inflate(LayoutInflater.from(context), this)
         binding.btErrorViewRetryButton.setOnClickListener {
             errorBundle?.let { errorBundle ->
                 errorListener?.apply {
@@ -41,6 +41,8 @@ class ErrorView : RelativeLayout {
                 } ?: Timber.e("Error listener is null")
             } ?: Timber.e("Error bundle is null")
         }
+
+        binding.tvErrorViewMessage.text = errorBundle?.let { context.getString(it.stringId) }
     }
 
     fun setErrorMessage(message: String) {

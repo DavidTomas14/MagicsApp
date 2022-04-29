@@ -4,19 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.company.mobile.android.appname.app.R
 import com.company.mobile.android.appname.app.card.adapter.CardAdapter
 import com.company.mobile.android.appname.app.common.BaseFragment
+import com.company.mobile.android.appname.app.common.errorhandling.AppAction
+import com.company.mobile.android.appname.app.common.errorhandling.ErrorBundle
 import com.company.mobile.android.appname.app.common.model.ResourceState
+import com.company.mobile.android.appname.app.common.model.ResourceState.Error
 import com.company.mobile.android.appname.app.common.model.ResourceState.Loading
 import com.company.mobile.android.appname.app.common.model.ResourceState.Success
+import com.company.mobile.android.appname.app.common.util.gone
+import com.company.mobile.android.appname.app.common.util.visible
+import com.company.mobile.android.appname.app.common.widget.error.ErrorListener
 import com.company.mobile.android.appname.app.databinding.FragmentCardsBinding
 import com.company.mobile.android.appname.model.card.Card
 import org.koin.android.ext.android.inject
+import timber.log.Timber
 
-class CardsFragment : BaseFragment() {
+class CardsFragment : BaseFragment(), ErrorListener {
 
     private lateinit var binding: FragmentCardsBinding
     private lateinit var adapter: CardAdapter
@@ -42,6 +50,18 @@ class CardsFragment : BaseFragment() {
         }
     }
 
+    override fun initializeViews(savedInstanceState: Bundle?) {
+        super.initializeViews(savedInstanceState)
+        adapter = CardAdapter(requireContext())
+        adapter.setCardAdapterListener(adapterListener)
+        binding.rvListCard.adapter = adapter
+
+        val arrowback = activity?.findViewById<ImageView>(R.id.iv_arrow_back)
+        arrowback?.setOnClickListener{
+            findNavController().navigateUp()
+        }
+    }
+
     override fun initializeState(savedInstanceState: Bundle?) {
         super.initializeState(savedInstanceState)
 
@@ -55,42 +75,51 @@ class CardsFragment : BaseFragment() {
         when (cardsState) {
             is Loading -> setUpScreenForLoading()
             is Success -> setUpScreenForSuccess(cardsState.data)
-            is Error -> {}
+            is Error -> setUpSreenForError(cardsState.errorBundle)
         }
     }
 
     private fun setUpScreenForSuccess(cards: List<Card>) {
+        binding.apply {
+            nsvListCard.visible()
+            lvCardsLoadingView.gone()
+            evCardsEmptyView.gone()
+            evCardsErrorView.gone()
+        }
         adapter.submitList(cards.toMutableList())
     }
 
     private fun setUpScreenForLoading() {
-
+        binding.apply {
+            nsvListCard.gone()
+            lvCardsLoadingView.visible()
+            evCardsEmptyView.gone()
+            evCardsErrorView.gone()
+        }
     }
 
-    override fun initializeViews(savedInstanceState: Bundle?) {
-        super.initializeViews(savedInstanceState)
-        adapter = CardAdapter(requireContext())
-        adapter.setCardAdapterListener(adapterListener)
-        binding.rvListCard.adapter = adapter
-
-
-        /*//Inicializar lo asociado a las vistas.
-         binding.rvListCard.adapter = adapter
-         adapter.submitList(listOf(
-             Card("nombre", 10, "Esto es una tarjeta de prueba", "200",""),
-             Card("nombre", 10, "Esto es una tarjeta de prueba", "200",""),
-             Card("nombre", 10, "Esto es una tarjeta de prueba", "200",""),
-             Card("nombre", 10, "Esto es una tarjeta de prueba", "200",""),
-             Card("nombre", 10, "Esto es una tarjeta de prueba", "200",""),
-             Card("nombre", 10, "Esto es una tarjeta de prueba", "200",""),
-             Card("nombre", 10, "Esto es una tarjeta de prueba", "200",""),
-             Card("nombre", 10, "Esto es una tarjeta de prueba", "200",""),
-             Card("nombre", 10, "Esto es una tarjeta de prueba", "200",""),
-             Card("nombre", 10, "Esto es una tarjeta de prueba", "200",""),
-             Card("nombre", 10, "Esto es una tarjeta de prueba", "200",""),
-             Card("nombre", 10, "Esto es una tarjeta de prueba", "200",""),
-             Card("nombre", 10, "Esto es una tarjeta de prueba", "200",""),
-
-         ).toMutableList())*/
+    private fun setUpSreenForError(errorBundle: ErrorBundle) {
+        binding.apply {
+            nsvListCard.gone()
+            lvCardsLoadingView.gone()
+            evCardsEmptyView.gone()
+            evCardsErrorView.visible()
+            evCardsErrorView.errorBundle = errorBundle
+            evCardsErrorView.errorListener = this@CardsFragment
+            evCardsErrorView.setErrorMessage(getString(errorBundle.stringId))
+        }
     }
+    override fun onErrorDialogCancelled(action: Long) {
+        Timber.d("User cancelled error dialog")
+    }
+
+    override fun onRetry(errorBundle: ErrorBundle) {
+        when (errorBundle.appAction) {
+            AppAction.GET_CARDS -> cardViewModel.fetchCards()
+            else -> Timber.d("This action is not supported")
+        }
+    }
+
+
+
 }
