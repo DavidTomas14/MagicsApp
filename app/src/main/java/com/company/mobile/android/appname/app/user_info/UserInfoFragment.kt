@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.company.mobile.android.appname.app.R
 import com.company.mobile.android.appname.app.common.BaseFragment
-import com.company.mobile.android.appname.app.databinding.FragmentCardsBinding
 import com.company.mobile.android.appname.app.databinding.FragmentUserInfoBinding
 
-class UserInfoFragment: BaseFragment() {
+class UserInfoFragment : BaseFragment() {
 
     private lateinit var binding: FragmentUserInfoBinding
 
@@ -36,5 +36,13 @@ class UserInfoFragment: BaseFragment() {
         binding.btNavegar.setOnClickListener {
             findNavController().navigate(R.id.cardsFragment)
         }
+
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(this, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    activity?.finishAndRemoveTask()
+                }
+            })
     }
 }

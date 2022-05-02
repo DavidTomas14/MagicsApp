@@ -12,9 +12,7 @@ class SplashActivity: AppCompatActivity() {
 
         Handler().postDelayed({
             Navigator.navigateToMainActivity(this)
-        },1000
-        )
+            finish()
+        },1000)
     }
-
-
 }
