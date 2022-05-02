@@ -6,7 +6,7 @@ import com.company.mobile.android.appname.datasources.card.cache.dao.constants.C
 import com.company.mobile.android.appname.datasources.card.cache.dao.constants.CardsConstants.CARDS_TABLE
 
 @Entity(tableName = CARDS_TABLE)
-data class Card(
+data class CardDbModel(
     @PrimaryKey
     val id: Int,
     val name: String,

@@ -18,7 +18,7 @@ class CardsRemoteImpl constructor(
 
 
 
-    override fun getCards(): Single<List<Card>> {
+    override fun fetchCards(): Single<List<Card>> {
         return cardService.getCards()
             .onErrorResumeNext { throwable ->
                 // If remote request fails, use remote exception mapper to transform Retrofit exception to an app exception

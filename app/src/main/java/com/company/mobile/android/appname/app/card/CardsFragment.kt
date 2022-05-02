@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.company.mobile.android.appname.app.R
 import com.company.mobile.android.appname.app.card.adapter.CardAdapter
@@ -45,9 +44,7 @@ class CardsFragment : BaseFragment(), ErrorListener {
     override fun initializeContents(savedInstanceState: Bundle?) {
         super.initializeContents(savedInstanceState)
 
-        if (cardViewModel.getCards().value == null) {
             cardViewModel.fetchCards()
-        }
     }
 
     override fun initializeViews(savedInstanceState: Bundle?) {

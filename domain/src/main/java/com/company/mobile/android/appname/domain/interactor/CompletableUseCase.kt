@@ -16,7 +16,7 @@ abstract class CompletableUseCase<in Params> protected constructor(
     /**
      * Builds a [Completable] which will be used when the current [CompletableUseCase] is executed.
      */
-    protected abstract fun buildUseCaseObservable(params: Params): Completable
+    protected abstract fun buildUseCaseObservable(params: Params? = null): Completable
 
     /**
      * Executes the current use case.
@@ -24,7 +24,7 @@ abstract class CompletableUseCase<in Params> protected constructor(
      * This function is open in order to be mockeable in instrumental tests, which do not allow to mock final classes
      * or functions.
      */
-    open fun execute(params: Params): Completable {
+    open fun execute(params: Params? = null): Completable {
         return this.buildUseCaseObservable(params)
                 .subscribeOn(Schedulers.from(threadExecutor))
                 .observeOn(postExecutionThread.scheduler)
