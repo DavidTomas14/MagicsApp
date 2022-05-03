@@ -9,9 +9,13 @@
     <string name="visualizar_mazo">Visualizar Magics</string>
 
     <!-- region CardsList -->
+    <string name="prueba_card_nombre">Nombre Magic</string>
 
 
     <!-- region CardsDetail -->
+    <string name="prueba_texto">Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Text</string>
+    <string name="prueba_titulo">Prueba Título Magic</string>
+
 
 
 

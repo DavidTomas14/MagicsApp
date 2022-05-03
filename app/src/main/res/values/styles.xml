@@ -57,11 +57,6 @@
     </style>
 
     <!-- Forms -->
-    <!-- TextInputLayout -->
-    <style name="AppTheme.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
-        <!-- Sets the color of the hint when the edit text is focused or not -->
-        <item name="android:textColorHint">@drawable/text_input_edit_text_hint_light</item>
-    </style>
 
     <style name="AppTheme.ErrorText" parent="TextAppearance.AppCompat.Small">
         <!-- Sets the color of the error text -->

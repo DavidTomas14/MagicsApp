@@ -7,12 +7,12 @@
     android:orientation="vertical"
     android:id="@+id/cardItem"
     android:background="@drawable/customborder"
-    android:layout_margin="2dp">
+    android:layout_margin="@dimen/card_row_item_layout_margin">
 
     <ImageView
         android:id="@+id/iv_card_row_avatar_image"
         android:layout_width="match_parent"
-        android:layout_height="400px"
+        android:layout_height="@dimen/user_info_image_layout_heigth"
         android:src="@drawable/ic_user"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -25,6 +25,6 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_card_row_avatar_image"
         app:layout_constraintLeft_toLeftOf="@id/iv_card_row_avatar_image"
         app:layout_constraintRight_toRightOf="@id/iv_card_row_avatar_image"
-        android:text="Nombre " />
+        android:text="@string/prueba_card_nombre" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
